@@ -1,0 +1,664 @@
+USE Estudiante_34;
+
+CREATE TABLE Fecha (
+	Fecha DATETIME, 
+	Dia TINYINT, 
+	Mes VARCHAR(20), 
+	Anio SMALLINT,
+	Numero_semana_ISO TINYINT,
+	PRIMARY KEY(Fecha)
+);
+
+CREATE TABLE Producto (
+	ID_Producto SMALLINT, 
+	Nombre VARCHAR(100),
+	Marca VARCHAR(30), 
+	Paquete_de_compra VARCHAR(20), 
+	Color VARCHAR(10), 
+	Necesita_refrigeracion BOOLEAN, 
+	Dias_tiempo_entrega SMALLINT, 
+	cantidad_por_salida INT, 
+	Precio_minorista_recomendado FLOAT, 
+	Paquete_de_venta VARCHAR(20), 
+	Precio_unitario FLOAT,
+	PRIMARY KEY(ID_Producto)
+);
+
+CREATE TABLE Proveedor(
+	ID_proveedor INT,
+	Nombre VARCHAR(20),
+	Categoria VARCHAR(20),
+	Contacto_principal VARCHAR(30),
+	Referencia VARCHAR(30),
+	Dias_pago INT, 
+	Codigo_postal INT,
+	PRIMARY KEY(ID_proveedor)
+);
+
+CREATE TABLE TipoTransaccion(
+	ID_Tipo_transaccion TINYINT,
+	Tipo VARCHAR(20),
+	PRIMARY KEY(ID_Tipo_transaccion)
+);
+
+CREATE TABLE Cliente(
+	ID_Cliente INT,
+	Cliente_factura VARCHAR(30),
+	Grupo_compras VARCHAR(30),
+	Categoria VARCHAR(30),
+	Nombre VARCHAR(30),
+	Codigo_postal INT,
+	Contacto_principal VARCHAR(30),
+	PRIMARY KEY(ID_Cliente)
+);
+
+CREATE TABLE Hecho_Movimiento(
+	ID_Producto SMALLINT,
+	ID_proveedor INT,
+    ID_Cliente INT,
+    ID_Tipo_transaccion TINYINT,
+    Fecha_movimiento DATETIME,
+    Cantidad INT,
+    PRIMARY KEY(ID_Producto, ID_proveedor, ID_Cliente, ID_Tipo_transaccion, Fecha_movimiento)
+);
+
+/* INSERTS */
+INSERT INTO Cliente
+(
+	ID_Cliente,
+	Cliente_factura,
+	Grupo_compras,
+	Categoria,
+	Nombre,
+	Codigo_postal,
+	Contacto_principal
+)
+VALUES
+(
+	1,
+	'CLIENTE_01',
+	'GRUPO_01',
+	'CATEGORIA_01',
+	'PEDRO PEREZ',
+	123456,
+	'CONTACTO'
+);
+
+INSERT INTO Cliente
+(
+	ID_Cliente,
+	Cliente_factura,
+	Grupo_compras,
+	Categoria,
+	Nombre,
+	Codigo_postal,
+	Contacto_principal
+)
+VALUES
+(
+	2,
+	'CLIENTE_02',
+	'GRUPO_01',
+	'CATEGORIA_01',
+	'PABLO MARMOL',
+	123456,
+	'CONTACTO'
+);
+
+INSERT INTO Cliente
+(
+	ID_Cliente,
+	Cliente_factura,
+	Grupo_compras,
+	Categoria,
+	Nombre,
+	Codigo_postal,
+	Contacto_principal
+)
+VALUES
+(
+	3,
+	'CLIENTE_03',
+	'GRUPO_01',
+	'CATEGORIA_01',
+	'PEDRO PICAPIEDRAS',
+	123456,
+	'CONTACTO'
+);
+
+INSERT INTO Cliente
+(
+	ID_Cliente,
+	Cliente_factura,
+	Grupo_compras,
+	Categoria,
+	Nombre,
+	Codigo_postal,
+	Contacto_principal
+)
+VALUES
+(
+	4,
+	'CLIENTE_04',
+	'GRUPO_01',
+	'CATEGORIA_01',
+	'BETTY MARMOL',
+	123456,
+	'CONTACTO'
+);
+
+INSERT INTO Cliente
+(
+	ID_Cliente,
+	Cliente_factura,
+	Grupo_compras,
+	Categoria,
+	Nombre,
+	Codigo_postal,
+	Contacto_principal
+)
+VALUES
+(
+	5,
+	'CLIENTE_05',
+	'GRUPO_01',
+	'CATEGORIA_01',
+	'VILMA PICAPIEDRA',
+	123456,
+	'CONTACTO'
+);
+
+/* INSERTS FECHA */
+INSERT INTO Fecha
+(
+	Fecha,
+	Dia,
+	Mes,
+    Anio,
+	Numero_semana_ISO
+)
+VALUES
+(
+	'1989-05-18 12:55:55',
+	'18',
+	'May',
+	'1989',
+	'20'
+);
+
+INSERT INTO Fecha
+(
+	Fecha,
+	Dia,
+	Mes,
+    Anio,
+	Numero_semana_ISO
+)
+VALUES
+(
+	'1989-01-01 12:55:55',
+	'01',
+	'Jan',
+	'1989',
+	'1'
+);
+
+INSERT INTO Fecha
+(
+	Fecha,
+	Dia,
+	Mes,
+    Anio,
+	Numero_semana_ISO
+)
+VALUES
+(
+	'2000-08-15 11:22:22',
+	'15',
+	'Aug',
+	'2000',
+	'33'
+);
+
+INSERT INTO Fecha
+(
+	Fecha,
+	Dia,
+	Mes,
+    Anio,
+	Numero_semana_ISO
+)
+VALUES
+(
+	'2005-12-12 11:11:11',
+	'12',
+	'Dec',
+	'2005',
+	'50'
+);
+
+INSERT INTO Fecha
+(
+	Fecha,
+	Dia,
+	Mes,
+    Anio,
+	Numero_semana_ISO
+)
+VALUES
+(
+	'2005-12-24 11:11:11',
+	'24',
+	'Dec',
+	'2005',
+	'51'
+);
+
+/* Inserts Producto */
+
+INSERT INTO Producto
+(
+	ID_Producto,
+	Nombre,
+	Marca,
+	Paquete_de_compra,
+	Color,
+	Necesita_refrigeracion,
+	Dias_tiempo_entrega,
+	cantidad_por_salida,
+	Precio_minorista_recomendado,
+	Paquete_de_venta,
+	Precio_unitario
+)
+VALUES
+(
+	1,
+	'Producto_01',
+	'Marca_01',
+	'Paquete',
+	'Azul',
+	0,
+	15,
+	1,
+	12.0,
+	'Paquete ventas',
+	5.0
+);
+
+INSERT INTO Producto
+(
+	ID_Producto,
+	Nombre,
+	Marca,
+	Paquete_de_compra,
+	Color,
+	Necesita_refrigeracion,
+	Dias_tiempo_entrega,
+	cantidad_por_salida,
+	Precio_minorista_recomendado,
+	Paquete_de_venta,
+	Precio_unitario
+)
+VALUES
+(
+	2,
+	'Producto_02',
+	'Marca_01',
+	'Paquete',
+	'Azul',
+	0,
+	15,
+	1,
+	12.0,
+	'Paquete ventas',
+	5.0
+);
+
+INSERT INTO Producto
+(
+	ID_Producto,
+	Nombre,
+	Marca,
+	Paquete_de_compra,
+	Color,
+	Necesita_refrigeracion,
+	Dias_tiempo_entrega,
+	cantidad_por_salida,
+	Precio_minorista_recomendado,
+	Paquete_de_venta,
+	Precio_unitario
+)
+VALUES
+(
+	3,
+	'Producto_03',
+	'Marca_01',
+	'Paquete',
+	'Azul',
+	0,
+	15,
+	1,
+	12.0,
+	'Paquete ventas',
+	5.0
+);
+
+INSERT INTO Producto
+(
+	ID_Producto,
+	Nombre,
+	Marca,
+	Paquete_de_compra,
+	Color,
+	Necesita_refrigeracion,
+	Dias_tiempo_entrega,
+	cantidad_por_salida,
+	Precio_minorista_recomendado,
+	Paquete_de_venta,
+	Precio_unitario
+)
+VALUES
+(
+	4,
+	'Producto_04',
+	'Marca_01',
+	'Paquete',
+	'Azul',
+	0,
+	15,
+	1,
+	12.0,
+	'Paquete ventas',
+	5.0
+);
+
+INSERT INTO Producto
+(
+	ID_Producto,
+	Nombre,
+	Marca,
+	Paquete_de_compra,
+	Color,
+	Necesita_refrigeracion,
+	Dias_tiempo_entrega,
+	cantidad_por_salida,
+	Precio_minorista_recomendado,
+	Paquete_de_venta,
+	Precio_unitario
+)
+VALUES
+(
+	5,
+	'Producto_05',
+	'Marca_01',
+	'Paquete',
+	'Azul',
+	0,
+	15,
+	1,
+	12.0,
+	'Paquete ventas',
+	5.0
+);
+
+/* INSERTS PROVEEDOR */
+INSERT INTO Proveedor
+(
+	ID_proveedor,
+	Nombre,
+	Categoria,
+	Contacto_principal,
+	Referencia,
+	Dias_pago,
+	Codigo_postal
+)
+VALUES
+(
+	1,
+	'Proveedor_1',
+	'Categoria',
+	'Contacto',
+	'Ref',
+	5,
+	123456
+);
+
+INSERT INTO Proveedor
+(
+	ID_proveedor,
+	Nombre,
+	Categoria,
+	Contacto_principal,
+	Referencia,
+	Dias_pago,
+	Codigo_postal
+)
+VALUES
+(
+	2,
+	'Proveedor_2',
+	'Categoria',
+	'Contacto',
+	'Ref',
+	5,
+	123456
+);
+
+INSERT INTO Proveedor
+(
+	ID_proveedor,
+	Nombre,
+	Categoria,
+	Contacto_principal,
+	Referencia,
+	Dias_pago,
+	Codigo_postal
+)
+VALUES
+(
+	3,
+	'Proveedor_3',
+	'Categoria',
+	'Contacto',
+	'Ref',
+	5,
+	123456
+);
+
+INSERT INTO Proveedor
+(
+	ID_proveedor,
+	Nombre,
+	Categoria,
+	Contacto_principal,
+	Referencia,
+	Dias_pago,
+	Codigo_postal
+)
+VALUES
+(
+	4,
+	'Proveedor_4',
+	'Categoria',
+	'Contacto',
+	'Ref',
+	5,
+	123456
+);
+
+INSERT INTO Proveedor
+(
+	ID_proveedor,
+	Nombre,
+	Categoria,
+	Contacto_principal,
+	Referencia,
+	Dias_pago,
+	Codigo_postal
+)
+VALUES
+(
+	5,
+	'Proveedor_5',
+	'Categoria',
+	'Contacto',
+	'Ref',
+	5,
+	123456
+);
+
+/* Inserts Tipo Transaccion */
+
+INSERT INTO TipoTransaccion
+(
+	ID_Tipo_transaccion,
+	Tipo)
+VALUES
+(
+	1,
+	'Tipo1'
+);
+
+/* Inserts Tipo Transaccion */
+
+INSERT INTO TipoTransaccion
+(
+	ID_Tipo_transaccion,
+	Tipo)
+VALUES
+(
+	2,
+	'Tipo2'
+);
+
+/* Inserts Tipo Transaccion */
+
+INSERT INTO TipoTransaccion
+(
+	ID_Tipo_transaccion,
+	Tipo)
+VALUES
+(
+	3,
+	'Tipo3'
+);
+
+/* Inserts Tipo Transaccion */
+
+INSERT INTO TipoTransaccion
+(
+	ID_Tipo_transaccion,
+	Tipo)
+VALUES
+(
+	4,
+	'Tipo4'
+);
+
+/* Inserts Tipo Transaccion */
+
+INSERT INTO TipoTransaccion
+(
+	ID_Tipo_transaccion,
+	Tipo)
+VALUES
+(
+	5,
+	'Tipo5'
+);
+
+/* Inserts Hecho Movimiento */
+INSERT INTO Hecho_Movimiento
+(
+	ID_Producto,
+	ID_proveedor,
+	ID_Cliente,
+	ID_Tipo_transaccion,
+	Fecha_movimiento,
+	Cantidad
+)
+VALUES
+(
+	1,
+	1,
+	1,
+	1,
+	'1989-01-01 12:55:55',
+	10
+);
+
+INSERT INTO Hecho_Movimiento
+(
+	ID_Producto,
+	ID_proveedor,
+	ID_Cliente,
+	ID_Tipo_transaccion,
+	Fecha_movimiento,
+	Cantidad
+)
+VALUES
+(
+	2,
+	2,
+	2,
+	2,
+	'1989-01-01 12:55:55',
+	5
+);
+
+INSERT INTO Hecho_Movimiento
+(
+	ID_Producto,
+	ID_proveedor,
+	ID_Cliente,
+	ID_Tipo_transaccion,
+	Fecha_movimiento,
+	Cantidad
+)
+VALUES
+(
+	1,
+	2,
+	3,
+	4,
+	'1989-05-18 12:55:55',
+	1
+);
+
+INSERT INTO Hecho_Movimiento
+(
+	ID_Producto,
+	ID_proveedor,
+	ID_Cliente,
+	ID_Tipo_transaccion,
+	Fecha_movimiento,
+	Cantidad
+)
+VALUES
+(
+	5,
+	5,
+	5,
+	5,
+	'1989-05-18 12:55:55',
+	100
+);
+
+INSERT INTO Hecho_Movimiento
+(
+	ID_Producto,
+	ID_proveedor,
+	ID_Cliente,
+	ID_Tipo_transaccion,
+	Fecha_movimiento,
+	Cantidad
+)
+VALUES
+(
+	1,
+	2,
+	3,
+	2,
+	'2005-12-24 11:11:11',
+	25
+);
